@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="joanna">
-        <template v-for="sad in asd">
-            <div v-for="(val,key) in sad">
-                 <p>{{ key }} - {{ val }}</p>
-            </div>
-        </template>
+    <div id="joanna1">
+        <greeting></greeting>
+        <p v-show="changeName"> </p>
+            <button v-on:click="changeName"> Change Name </button>
+        </p>
     </div> 
 
 

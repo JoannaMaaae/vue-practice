@@ -3,7 +3,7 @@ var data ={
 }
 
 Vue.component('greeting', {
-    template: '<p> Hello there! My name is {{ name }}. <button v-on:click="changeName"> Change Name </button> </p>',
+    template: '<p> Hello there! My name is {{ name }}. <button v-on:click="changeName" v-model="name"> Change Name </button> </p>',
     data: function(){
         return data;
     },
@@ -113,7 +113,7 @@ var one = new Vue({
     },
     computed: {
         greet: function(){
-            return 'greeting from vue app 1! :)';
+            return 'Greetings from Vue app 1! :)';
         }
     }
 });
@@ -131,7 +131,7 @@ var two = new Vue({
     },
     computed: {
         greet: function(){
-            return 'greeting from vue app 2! :)';
+            return 'Greetings from vue app 2! :)';
         }
     }
 });
