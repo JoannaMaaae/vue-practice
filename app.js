@@ -11,7 +11,18 @@ new Vue ({
         a: 0,
         b: 0,
         website: 'http://www.spotty.com',
-        websiteTag: '<a href="http://www.milo.com"> Milo </a>'
+        websiteTag: '<a href="http://www.milo.com"> Milo </a>',
+        available: true,
+        nearby: false,
+        error: false,
+        success: false,
+        greeting: '',
+        characters: ['Precious','TCharlon','Micha','Joanna'],
+        asd:[
+            {name: 'Ced', age:'20'},
+            {name: 'Joanna', age:'19'},
+            {name: 'Marco', age:'20'}
+        ]
     },
     methods: {
         greet: function(time){
@@ -53,6 +64,12 @@ new Vue ({
         addToB: function(){
             console.log('Age is added in B.');
             return this.b + this.age;    
+        },
+        compClasses: function(){
+            return{
+                available: this.available,
+                nearby: this.nearby
+            }
         }
     }
 });
