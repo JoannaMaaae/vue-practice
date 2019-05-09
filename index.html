@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> The Net Ninja </title>
     <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
@@ -98,17 +98,64 @@
         <button v-on:click="success = !success"> Toggle Success</button>         
         <!--<p v-if="error"> There has been an error</p>
         <p v-else-if="success"> There is no error at all </p>
-        <p v-else="greeting"> Hello there! </p> -->
+        <p v-else="greetings"> Hello there! </p> -->
         <p v-show="error"> There has been an error</p>
         <p v-show="success"> There is no error at all </p>
         <br> <br>  
         <!-- Looping with V-FOR -->
         <h1><u> Looping with V-FOR </u></h1> 
         <ul>
-            <li v-for="ootb in characters"></li>
+            <li v-for="(ootb, index) in characters">{{index}} . {{ ootb }}</li>
         </ul>
-    </div> 
+        <br> <br>
+        <ul>
+            <li v-for="(sad,index) in asd">{{index}} . {{ sad.name }} - {{ sad.age }}</li>
+        </ul>
+        <br> <br>
+        <template v-for="(sad,index) in asd">
+            <h3>{{index}} . {{ sad.name }} {{</h3>
+            <p>{{ sad.age }}</p>
+        </template>
+        <br> <br>
+        <template v-for="sad in asd">
+                <div v-for="(val,key) in sad">
+                    <p>{{ key }} - {{ val }}</p>
+                </div>
+        </template>
+        <br> <br>  
+        <!-- Simple Punchbag Game -->
+        <h1><u> Simple Punchbag Game </u></h1> 
 
+        <!-- Bag Image-->
+        <div id="bag" v-on:click="punch" v-bind:class="{ burst: ended}"></div>
+
+        <!-- Bag Health-->
+        <div id="bag-health">
+            <div v-bind:style="{width:health+'%'}"> </div>
+        </div>
+        
+        <!-- Game Controls-->
+        <div id="controls">
+            <button v-on:click="punch" v-show="!ended"> Punch </button>
+            <button v-on:click="restart"> Restart </button>
+        </div>
+        <br> <br>
+    </div>
+        <!-- Multiple Vue Instances and Intro to Components -->
+        <h1><u> Multiple Vue Instances </u></h1>
+        <div id="joanna1">
+            <h2>{{ title }}</h2>
+            <p> {{ greet }}</p>
+            <greeting></greeting>
+        </div>
+        <div id="joanna2">
+            <h2>{{ title }}</h2>
+            <p> {{ greet }}</p>
+            <greeting></greeting>
+            <button v-on:click="changeTitle"> Change App One's Title </button>
+        </div>
+        <br> <br>
+        
 
     <script src="app.js"></script>
 </body>

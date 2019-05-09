@@ -1,3 +1,20 @@
+var data ={
+    name: 'Joanna Mae Odoño'
+}
+
+Vue.component('greeting', {
+    template: '<p> Hello there! My name is {{ name }}. <button v-on:click="changeName"> Change Name </button> </p>',
+    data: function(){
+        return data;
+    },
+    methods: {
+        changeName: function(){
+            this.name = 'Joanna Mae Sestoso';
+        }
+    }
+});
+
+/* 1st instance */
 new Vue ({
     el: '#joanna',
     data: {
@@ -16,13 +33,15 @@ new Vue ({
         nearby: false,
         error: false,
         success: false,
-        greeting: '',
-        characters: ['Precious','TCharlon','Micha','Joanna'],
+        greetings: '',
+        characters: ['Precious','Charlon','Micha','Joanna'],
         asd:[
             {name: 'Ced', age:'20'},
             {name: 'Joanna', age:'19'},
             {name: 'Marco', age:'20'}
-        ]
+        ],
+        health: 100,
+        ended: false
     },
     methods: {
         greet: function(time){
@@ -46,7 +65,7 @@ new Vue ({
         },
         logAge: function(){
             console.log('You entered your age.');
-        }
+        },
         /* addToA: function(){
             console.log('Age is added in A.');
             return this.a + this.age;
@@ -55,6 +74,16 @@ new Vue ({
             console.log('Age is added in B.');
             return this.b + this.age;    
         }*/
+        punch: function(){
+            this.health -= 10;
+            if (this.health <=0){
+                this.ended=true;
+            }
+        },
+        restart: function(){
+            this.health = 100;
+            this.ended=false;
+        }
     },
     computed: {
         addToA: function(){
@@ -73,3 +102,38 @@ new Vue ({
         }
     }
 });
+/* 2nd instance */
+var one = new Vue({
+    el: "#joanna1",
+    data: {
+        title: 'Vue App One'
+    },
+    methods: {
+
+    },
+    computed: {
+        greet: function(){
+            return 'greeting from vue app 1! :)';
+        }
+    }
+});
+/* 3rd instance */
+var two = new Vue({
+    el: "#joanna2",
+    data: {
+        title: 'Vue App Two'
+    },
+    methods: {
+        changeTitle: function(){
+            one.title ="Title changed";
+        }
+
+    },
+    computed: {
+        greet: function(){
+            return 'greeting from vue app 2! :)';
+        }
+    }
+});
+
+/* this one is two.title = "Changed from outside"; */
