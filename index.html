@@ -12,12 +12,14 @@
     <div id="joanna">
         <!-- Vue Instance -->
         <h1> {{ greet(' Morning') }}!</h1>
-        <br> <br>
+        <br>
         <p>Name: {{ name }}
         <br> Job: {{ job }}</p>
-        <br> <br>  
+        <br> <br>
+
         <!-- Data Binding -->
         <h1><u>Data Binding</u></h1>
+        <br>
         <p> Website: <br>
             <input type="text" v-bind:value="name">
             </input>
@@ -29,22 +31,24 @@
         <h1><u> Events </u></h1>
         <br>
         <p> My age is {{ age }} years old </p>
+        <button v-on:click="add(1)" class="btn"> Add a Year </button>
+        <button v-on:click="subtract(1)" class="btn"> Subtract a Year </button>
+        <button v-on:dblclick="add(10)" class="btn"> Add 10 Years </button>
+        <button v-on:dblclick="subtract(10)" class="btn"> Subtract 10 Years </button>
         <br> <br>
-        <button v-on:click="add(1)"> Add a Year </button>
-        <button v-on:click="subtract(1)"> Subtract a Year </button>
-        <button v-on:dblclick="add(10)"> Add 10 Years </button>
-        <button v-on:dblclick="subtract(10)"> Subtract 10 Years </button>
-        <br> <br>
+        <h1><u> Mouse Movements </u></h1>
+        <br>
         <div id="canvas" v-on:mousemove="updateXY"> {{x}}, {{y}} </div>
         <br> <br>  
         <!-- Event Modifiers -->
         <!-- <button v-on:click.once="add(1)"> Add a Year </button> -->
         <h1><u> Event Modifiers </u></h1>
-        <br> <br>
+        <br>
         <a v-on:click.prevent="click" href="http://www.spottyandmilo.com"> Spotty and Milo</a>
         <br> <br>  
         <!-- Keyboard Modifiers -->
         <h1><u> Keyboard Events </u></h1>
+        <br>
         <label> Name: </label>
         <br>
         <input type="text" v-on:keyup.enter="logName" placeholder="Enter your Name..." />
@@ -55,7 +59,7 @@
         <br> <br>  
         <!-- Two-Way Data Binding -->
         <h1><u> Two-Way Data Binding </u></h1>
-        <br> <br>
+        <br>
         <label> Name: </label>
         <br>
         <input type="text" v-model="name1" placeholder="Enter your Name..." />
@@ -68,43 +72,50 @@
         <br> <br>  
         <!-- Computed Properties -->
         <h1><u> Computed Properties </u></h1>
-        <br> <br>        
-        <button v-on:click.enter="a++" class="btn"> Add to A </button>
-        <button v-on:click="b++" class="btn"> Add to B </button>
+        <br>
         <br> <br>
         <p>A - {{a}} </p>
         <p>B - {{b}} </p>
         <p>Age + A = {{addToA}}</p>
         <p>Age + B = {{addToB}}</p>
-        <br> <br>  
+        <br>
+        <button v-on:click.enter="a++" class="btn"> Add to A </button>
+        <button v-on:click="b++" class="btn"> Add to B </button>
+        <br> <br> <br>
         <!-- Dynamic CSS -->
         <h1><u> Dynamic CSS </u></h1>
-            <br> <br>  
+            <br> 
             <h2>Example #1 </h2>
+            <br>
             <!-- <div v-bind:class="{red: false, blue: true}"> -->
             <div v-on:click="available = !available" v-bind:class="{available: available}">
                 <span> Spotty </span>
             </div>
             <br> <br>
             <h2>Example #2 </h2>
-            <button v-on:click="nearby = !nearby"> Toggle nearby</button>
-            <button v-on:click="available = !available"> Toggle available</button>
+            <br>
             <div v-bind:class="compClasses">
                 <span> Milo </span>
             </div>
+            <br>
+            <button v-on:click="nearby = !nearby"> Toggle nearby</button>
+            <button v-on:click="available = !available"> Toggle available</button>
         <br> <br>  
         <!-- Conditionals -->
-        <h1><u> Conditonals </u></h1>   
-        <button v-on:click="error = !error"> Toggle Error</button>
-        <button v-on:click="success = !success"> Toggle Success</button>         
+        <h1><u> Conditonals </u></h1>
+        <br>  
+        <button v-on:click="error = !error" class="btn"> Toggle Error</button>
+        <button v-on:click="success = !success" class="btn"> Toggle Success</button>         
         <!--<p v-if="error"> There has been an error</p>
         <p v-else-if="success"> There is no error at all </p>
         <p v-else="greetings"> Hello there! </p> -->
+        <br> <br>
         <p v-show="error"> There has been an error</p>
         <p v-show="success"> There is no error at all </p>
         <br> <br>  
         <!-- Looping with V-FOR -->
-        <h1><u> Looping with V-FOR </u></h1> 
+        <h1><u> Looping with V-FOR </u></h1>
+        <br> <br>
         <ul>
             <li v-for="(ootb, index) in characters">{{index}} . {{ ootb }}</li>
         </ul>
@@ -126,7 +137,7 @@
         <br> <br>  
         <!-- Simple Punchbag Game -->
         <h1><u> Simple Punchbag Game </u></h1> 
-
+        <br>
         <!-- Bag Image-->
         <div id="bag" v-on:click="punch" v-bind:class="{ burst: ended}"></div>
 
@@ -137,27 +148,44 @@
         
         <!-- Game Controls-->
         <div id="controls">
-            <button v-on:click="punch" v-show="!ended"> Punch </button>
-            <button v-on:click="restart"> Restart </button>
+            <button v-on:click="punch" v-show="!ended" class="btn"> Punch </button>
+            <button v-on:click="restart" class="btn"> Restart </button>
         </div>
-        <br> <br>
+        <br> <br> <br> <br>
         <!-- Refs -->
         <h1><u> Refs </u></h1>
-        <input type="text"> 
-        <button v-on:click>Submit</button>       
+        <br>
+        <input type="text" ref="input" v-on:keyup.enter="readRefs"> 
+        <button v-on:click="readRefs" class="btn">Submit</button>
+        <br> <br>
+        <p>Your favorite food is {{output}}</p>
+        <br>
+        
+
+
+
+
+
     </div>
         <!-- Multiple Vue Instances and Intro to Components -->
         <h1><u> Multiple Vue Instances </u></h1>
+        <br>
         <div id="joanna1">
+            <br> <br>
             <h2>{{ title }}</h2>
+            <br>
             <p> {{ greet }}</p>
             <greeting></greeting>
         </div>
+        <br> <br>
         <div id="joanna2">
+            <br> <br>
             <h2>{{ title }}</h2>
+            <br>
             <p> {{ greet }}</p>
             <greeting></greeting>
-            <button v-on:click="changeTitle"> Change App One's Title </button>
+            <br> <br>
+            <button v-on:click="changeTitle" class="btn"> Change App One's Title </button>
         </div>
         <br> <br>
 

@@ -1,6 +1,6 @@
-
+/* VUE COMPONENT */
 Vue.component('greeting', {
-    template: '<p> Hello there! My name is {{ j }}. <button v-on:click="changeName"> Change Name </button> </p>',
+    template: '<p> Hello there! My name is {{ j }}. <br> <button v-on:click="changeName" class="btn"> Change Name </button> </p>',
     data: function(){
         return{
             j: 'Joanna',
@@ -51,7 +51,8 @@ new Vue ({
             {name: 'Marco', age:'20'}
         ],
         health: 100,
-        ended: false
+        ended: false,
+        output: '',
     },
     methods: {
         greet: function(time){
@@ -93,6 +94,10 @@ new Vue ({
         restart: function(){
             this.health = 100;
             this.ended=false;
+        },
+        readRefs:function(){
+            console.log(this.$refs.input.value);
+            this.output = this.$refs.input.value + '.';
         }
     },
     computed: {
@@ -123,7 +128,7 @@ var one = new Vue({
     },
     computed: {
         greet: function(){
-            return 'Greetings from Vue app 1! :)';
+            return 'Greetings from Vue app 1!!! :)';
         }
     }
 });
@@ -141,7 +146,7 @@ var two = new Vue({
     },
     computed: {
         greet: function(){
-            return 'Greetings from vue app 2! :)';
+            return 'Greetings from Vue app 2!!!';
         }
     }
 });
