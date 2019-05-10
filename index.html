@@ -11,9 +11,10 @@
 <body>
     <div id="joanna">
         <!-- Vue Instance -->
-        <h1> {{ greet(' Afternoon') }}!</h1>
-        <p>Name: {{ name }}</p>
-        <p>Job: {{ job }}</p>
+        <h1> {{ greet(' Morning') }}!</h1>
+        <br> <br>
+        <p>Name: {{ name }}
+        <br> Job: {{ job }}</p>
         <br> <br>  
         <!-- Data Binding -->
         <h1><u>Data Binding</u></h1>
@@ -22,7 +23,7 @@
             </input>
         </p>
         <a v-bind:href="website"> Spotty </a>
-        <p v-html=" websiteTag"></p>
+        <p v-html="websiteTagg"></p>
         <br> <br>  
         <!-- Events -->
         <h1><u> Events </u></h1>
@@ -140,6 +141,10 @@
             <button v-on:click="restart"> Restart </button>
         </div>
         <br> <br>
+        <!-- Refs -->
+        <h1><u> Refs </u></h1>
+        <input type="text"> 
+        <button v-on:click>Submit</button>       
     </div>
         <!-- Multiple Vue Instances and Intro to Components -->
         <h1><u> Multiple Vue Instances </u></h1>

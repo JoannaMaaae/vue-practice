@@ -1,15 +1,25 @@
-var data ={
-    name: 'Joanna Mae Odoño'
-}
 
 Vue.component('greeting', {
-    template: '<p> Hello there! My name is {{ name }}. <button v-on:click="changeName" v-model="name"> Change Name </button> </p>',
+    template: '<p> Hello there! My name is {{ j }}. <button v-on:click="changeName"> Change Name </button> </p>',
     data: function(){
-        return data;
+        return{
+            j: 'Joanna',
+            m:  'Mae',
+            namehehe: 'Joanna',
+            hehe: false
+        }
     },
     methods: {
         changeName: function(){
-            this.name = 'Joanna Mae Sestoso';
+            this.hehe = !this.hehe;
+            if (this.hehe == true)
+            {
+                this.j = this.m;
+            }
+            else
+            {
+                this.j = this.namehehe;
+            }
         }
     }
 });
@@ -18,17 +28,17 @@ Vue.component('greeting', {
 new Vue ({
     el: '#joanna',
     data: {
-        name: 'Joanna',
+        name: 'Joanna Mae C. Odoño',
         age: 19,
         name1: '',
         age1: '',
-        job: 'Manager',
+        job: 'Intern',
         x: 0,
         y: 0,
         a: 0,
         b: 0,
-        website: 'http://www.spotty.com',
-        websiteTag: '<a href="http://www.milo.com"> Milo </a>',
+        website: 'https://www.spotty.com',
+        websiteTagg:'<a href="https://www.milo.com>Milo</a>',
         available: true,
         nearby: false,
         error: false,
@@ -45,7 +55,7 @@ new Vue ({
     },
     methods: {
         greet: function(time){
-            return 'Good' + time + ' ' + this.name;
+            return 'Good' + time;
         }, 
         add: function(inc){
             this.age += inc;
